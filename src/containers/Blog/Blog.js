@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import Posts from "./Posts/Posts";
 import NewPost from "./NewPost/NewPost";
-import { Route, NavLink } from "react-router-dom";
+
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import "./Blog.css";
 
 class Blog extends Component {
   render() {
     return (
-      <div>
-        <header className="Blog">
+      <div className="Blog">
+        <header>
           <nav>
             <ul>
               <li>
                 <NavLink
-                  to="/"
+                  to="/posts/"
                   exact
                   activeClassName={"active home"}
                   activeStyle={{
-                    color: 'coral',
-                    textDecoration: 'underline'
+                    color: "coral",
+                    textDecoration: "underline",
                   }}
                 >
                   Home
@@ -38,8 +39,11 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Route path="/" exact component={Posts} />
-        <Route path="/new-post" component={NewPost} />
+        <Switch>
+          <Route path="/new-post" component={NewPost} />
+          <Route path="/posts" component={Posts} />
+          <Redirect from='/' to='/posts'/>
+        </Switch>
       </div>
     );
   }
