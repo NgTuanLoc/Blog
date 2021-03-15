@@ -8,7 +8,7 @@ class NewPost extends Component {
     title: "",
     content: "",
     author: "Max",
-    submitted: false
+    submitted: false,
   };
 
   postDataHandler = () => {
@@ -21,14 +21,14 @@ class NewPost extends Component {
       .post("https://jsonplaceholder.typicode.com/posts/", post)
       .then((response) => {
         console.log(response);
-        this.props.history.push('/posts/')
+        this.props.history.push("/posts/");
       });
   };
 
   render() {
-    const redirected = this.state.submitted ? <Redirect to="/posts"/>: null
+    const redirected = this.state.submitted ? <Redirect to="/posts" /> : null;
     return (
-      <div className="NewPost">        
+      <div className="NewPost">
         {redirected}
         <h1>Add a Post</h1>
         <label>Title</label>
@@ -48,8 +48,8 @@ class NewPost extends Component {
           value={this.state.author}
           onChange={(event) => this.setState({ author: event.target.value })}
         >
-          <option value="Max">Max</option>
-          <option value="Manu">Manu</option>
+          <option value="NgTuanLoc">NgTuanLoc</option>
+          <option value="SuBeo">SuBeo</option>
         </select>
         <button onClick={this.postDataHandler}>Add Post</button>
       </div>
