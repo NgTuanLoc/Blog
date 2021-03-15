@@ -21,9 +21,7 @@ class NewPost extends Component {
       .post("https://jsonplaceholder.typicode.com/posts/", post)
       .then((response) => {
         console.log(response);
-        this.setState({
-          submitted: true
-        })
+        this.props.history.push('/posts/')
       });
   };
 
